@@ -4,6 +4,10 @@
 
 ---
 
+<img align="center" src="https://raw.githubusercontent.com/MarcelvanDuijnDev/MVD.AI/refs/heads/main/other/interface_example.png">
+
+---
+
 ## **Features**
 
 ### **AI Modules**
