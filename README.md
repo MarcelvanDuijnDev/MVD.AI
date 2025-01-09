@@ -42,8 +42,7 @@
    - Azure Cognitive Services (for TTS/STT)
    - Anthropic (ClaudeAI)
 
-# For CUDA 12.4 support, install torch as per: https://pytorch.org/get-started/locally/
-torch==2.5.1+cu124
+### For CUDA 12.4 support, install torch as per: https://pytorch.org/get-started/locally/torch==2.5.1+cu124
 
 ### **Clone the Repository**
 ```bash
