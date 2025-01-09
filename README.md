@@ -46,7 +46,7 @@
 
 ### **Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/MVD.AI.git
+git clone https://github.com/MarcelvanDuijnDev/MVD.AI.git
 cd MVD.AI
 ```
 
