@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVD.AI</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Audio Player -->
+    <audio id="audio-player" controls style="display: none;"></audio>
+
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>MVD.AI</h2>
+            <button onclick="showTab('ai_requests')" class="active">AI Chat</button>
+            <button onclick="showTab('microsoftazure')">Azure TTS</button>
+            <button onclick="showTab('live_detection')">Live Detection</button>
+            <button onclick="showTab('stable_diffusion')">Stable Diffusion</button>
+            <button onclick="showTab('monitor')">Monitoring</button>
+            <button onclick="showTab('logs')">Logs</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-area">
+            <!-- Settings Tab -->
+            <div id="settings" class="tab-content" style="display: none;">
+                <h2>Settings</h2>
+                <div class="tab-controls">
+                    <button onclick="loadFilters()">Manage Filters</button>
+                </div>
+                <div id="filters-display" class="output-container"></div>
+            </div>
+
+            <!-- Logs Tab -->
+            <div id="logs" class="tab-content" style="display: none;">
+                <h2>Logs</h2>
+                <div class="tab-controls">
+                    <button onclick="loadLogs('blocked_messages')">Blocked Messages</button>
+                    <button onclick="loadLogs('ai_usage')">AI Usage</button>
+                </div>
+                <div id="logs-display" class="output-container"></div>
+            </div>
+
+            <!-- Monitoring Tab -->
+            <div id="monitor" class="tab-content" style="display: none;">
+                <h2>Monitoring</h2>
+                <div class="tab-controls">
+                    <button onclick="loadState()">Activity Tracker</button>
+                    <button onclick="loadSystemInfo()">System Info</button>
+                </div>
+                <div id="monitor-display" class="output-container"></div>
+            </div>
+
+            <!-- AI Chat Tab -->
+            <div id="ai_requests" class="tab-content" style="display: none;">
+                <h2>AI Chat</h2>
+                <div class="chat-controls">
+                    <label>
+                        <input type="checkbox" id="toggle-openai" checked> OpenAI
+                    </label>
+                    <label>
+                        <input type="checkbox" id="toggle-googleai" checked> Google AI
+                    </label>
+                    <label>
+                        <input type="checkbox" id="toggle-claudeai" checked> Claude AI
+                    </label>
+                </div>
+                <div id="chat-messages" class="chat-messages">
+                    <!-- Messages will be dynamically added -->
+                </div>
+                <div class="chat-input">
+                    <textarea id="ai-input" rows="2" placeholder="Type your message..."></textarea>
+                    <button onclick="sendAIRequests()">Send</button>
+                </div>
+            </div>
+
+            <!-- Live Detection Tab -->
+            <div id="live_detection" class="tab-content" style="display: none;">
+                <h2>Live Object Detection</h2>
+                <div class="controls">
+                    <label for="source">Select Source:</label>
+                    <select id="source" onchange="changeSource()">
+                        <option value="webcam" selected>Webcam</option>
+                        <option value="screencapture">Screen Capture</option>
+                    </select>
+                </div>
+                <div class="live-feed-container">
+                    <img id="video-stream" src="/live_feed" alt="Live Feed">
+                </div>
+            </div>
+
+            <!-- Stable Diffusion Tab -->
+            <div id="stable_diffusion" class="tab-content" style="display: none;">
+                <div class="sd-container">
+                    <!-- Input Section -->
+                    <div class="sd-input-section">
+                        <h2>Generate Images</h2>
+                        <textarea id="sd-prompt" rows="2" placeholder="Enter your prompt here..."></textarea>
+                        <div class="sd-controls">
+                            <input type="number" id="sd-width" placeholder="Width (e.g., 512)" min="64" max="2048">
+                            <input type="number" id="sd-height" placeholder="Height (e.g., 512)" min="64" max="2048">
+                            <button onclick="generateSDImage()">Generate</button>
+                        </div>
+                    </div>
+
+                    <!-- Output Section -->
+                    <div id="sd-output" class="sd-output-section">
+                        <!-- Images will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Whisper Tab -->
+            <div id="microsoftazure" class="tab-content" style="display: none;">
+                <h2>Azure Speech</h2>
+
+                <div class="tts-section">
+                    <textarea id="tts-input" placeholder="Enter text to synthesize..."></textarea>
+                    <select id="voice-select">
+                        <option value="en-US-AriaNeural">Aria (English, US)</option>
+                        <option value="en-GB-RyanNeural">Ryan (English, UK)</option>
+                        <option value="de-DE-KatjaNeural">Katja (German)</option>
+                    </select>
+                    <button onclick="sendTTSRequest()">Generate Audio</button>
+                    <button onclick="playGeneratedAudio()">Play Audio</button>
+                </div>
+
+                <div class="stt-section">
+                    <h3>Speech-to-Text</h3>
+                    <input type="file" id="audio-upload" accept="audio/*">
+                    <button onclick="sendSTTRequest()">Transcribe</button>
+                    <div id="stt-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>

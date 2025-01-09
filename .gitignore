@@ -1,0 +1,74 @@
+# Python-related files
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pydc
+*.pydx
+*.pysc
+*.pyo
+
+# Virtual Environment
+venv/
+env/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Test outputs
+.coverage
+.cache/
+pytest_cache/
+.tox/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+# MacOS-specific files
+.DS_Store
+
+# Windows-specific files
+Thumbs.db
+
+# Flask-specific files
+instance/
+*.sqlite3
+*.db
+
+# Frontend build
+/static/js/*.map
+/static/css/*.map
+
+# Package management
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+MANIFEST
+
+# Compiled files and distributions
+*.so
+*.a
+*.dll
+*.exe
+
+# IDE and editor files
+.idea/
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+
+# Debugger logs
+debug.log
+*.stackdump
+
+# Stable Diffusion/YOLO outputs
+static/audio/
+api_out/
+/models/stable-diffusion-webui
