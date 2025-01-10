@@ -109,6 +109,7 @@ async function sendAIRequests() {
     const openAIToggle = document.getElementById('toggle-openai').checked;
     const googleAIToggle = document.getElementById('toggle-googleai').checked;
     const claudeAIToggle = document.getElementById('toggle-claudeai').checked; // Toggle for Claude AI
+    const grokToggle = document.getElementById('toggle-grok').checked
     const userInput = document.getElementById('ai-input').value;
 
     if (!userInput.trim()) return;
@@ -152,6 +153,20 @@ async function sendAIRequests() {
             addChatMessage('ClaudeAI', result.reply || 'No response received.');
         } catch (error) {
             addChatMessage('ClaudeAI', `Error: ${error.message}`);
+        }
+    }
+
+    if (grokToggle) {
+        try {
+            const response = await fetch('/api/grok_request', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ input: userInput }),
+            });
+            const result = await response.json();
+            addChatMessage('Grok', result.reply || 'No response received.');
+        } catch (error) {
+            addChatMessage('Grok', `Error: ${error.message}`);
         }
     }
 }

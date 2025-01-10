@@ -7,6 +7,7 @@ import os
 from modules.openai import process_openai_request
 from modules.googleai import process_googleai_request
 from modules.claude import process_claude_request
+from modules.grok import process_grok_request
 from modules.filter_manager import manage_filters
 from modules.screencap_and_pytesseract import capture_screen, extract_text_from_image
 from modules.activity_tracker import get_current_state
@@ -47,10 +48,20 @@ def googleai_request():
 def claude_request():
     """Handle Claude AI requests."""
     data = request.json
-    user_input = data.get("input", "")  # Use "input" since the web interface sends this key
+    user_input = data.get("input", "")
     logging.info(f"Claude AI Request received: {data}")
     response = process_claude_request(user_input)
     logging.info(f"Claude AI Response: {response}")
+    return jsonify(response)
+
+@app.route('/api/grok_request', methods=['POST'])
+def grok_request():
+    """Handle Grok requests."""
+    data = request.json
+    user_input = data.get("input", "")
+    logging.info(f"Grok Request received: {data}")
+    response = process_grok_request(user_input)
+    logging.info(f"Grok Response: {response}")
     return jsonify(response)
 
 @app.route('/api/filters', methods=['GET', 'POST'])
