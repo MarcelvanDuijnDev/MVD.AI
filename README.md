@@ -59,9 +59,11 @@ cd MVD.AI
    ```
    OPENAI_API_KEY=your_openai_api_key
    GOOGLEAI_API_KEY=your_googleai_api_key
+   CLAUDE_AI_API_KEY = your_claudeai_api_key
+   GROK_API_KEY = your_grok_apikey
    AZURE_API_KEY=your_azure_api_key
    AZURE_REGION=your_azure_region
-   CLAUDE_API_KEY=your_claude_api_key
+   PYTESSERACTPATH = your_pytesseract_path
    ```
 
 2. Install Python dependencies:
