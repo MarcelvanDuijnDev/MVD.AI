@@ -18,7 +18,7 @@ def process_claude_request(user_input):
         response = client.completions.create(
             model="claude-2",
             prompt=f"{anthropic.HUMAN_PROMPT} {user_input}{anthropic.AI_PROMPT}",
-            max_tokens_to_sample=200,
+            max_tokens_to_sample=1000,
             temperature=0.7,
         )
 
